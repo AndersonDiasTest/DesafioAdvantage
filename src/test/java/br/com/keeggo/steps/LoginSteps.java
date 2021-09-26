@@ -1,0 +1,50 @@
+package br.com.keeggo.steps;
+
+import org.junit.Assert;
+
+import br.com.keeggo.pages.LoginPage;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Quando;
+
+public class LoginSteps {
+	
+	private LoginPage loginPage = new LoginPage();
+	private String usuario;
+
+	@Dado("que eu acesso a aplicacao")
+	public void que_eu_acesso_a_aplicacao() {
+	    loginPage.acessarPaginaInicial();
+	}
+
+	@Quando("clico no icone de usuario")
+	public void clico_no_icone_de_usuario() {
+	    loginPage.clicaBotaoUsuario();
+	}
+
+	@Quando("no campo Username preencho {string}")
+	public void no_campo_username_preencho(String username) {
+	    loginPage.setUsername(username);
+	    this.usuario = username;
+	}
+
+	@Quando("no campo Password preencho {string}")
+	public void no_campo_password_preencho(String password) {
+	    loginPage.setPassword(password);
+	}
+
+	@Quando("clico na opcao Sign In")
+	public void clico_na_opcao_sign_in() {
+	    loginPage.clicaBotaoSignIn();
+	}
+
+	@Entao("o sistema exibe o nome do usuario logado no canto superior da tela")
+	public void o_sistema_exibe_o_nome_do_usuario_logado_no_canto_superior_da_tela() {
+		Assert.assertEquals(usuario, loginPage.obterUsuario());
+	}
+
+	@Entao("o sistema exibe a mensagem {string}")
+	public void o_sistema_exibe_a_mensagem(String string) {
+		System.out.println("3");
+	}
+}
