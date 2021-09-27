@@ -1,13 +1,17 @@
 package br.com.keeggo.steps;
 
+import static br.com.keeggo.core.DriverFactory.killDriver;
+
 import org.junit.Assert;
 
+import br.com.keeggo.core.Propriedades;
 import br.com.keeggo.pages.LoginPage;
+import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 
-public class LoginSteps {
+public class LoginSteps{
 	
 	private LoginPage loginPage = new LoginPage();
 	private String usuario;
@@ -22,14 +26,14 @@ public class LoginSteps {
 	    loginPage.clicaBotaoUsuario();
 	}
 
-	@Quando("no campo Username preencho {string}")
-	public void no_campo_username_preencho(String username) {
+	@Quando("no campo Username informo {string}")
+	public void no_campo_username_informo(String username) {
 	    loginPage.setUsername(username);
 	    this.usuario = username;
 	}
 
-	@Quando("no campo Password preencho {string}")
-	public void no_campo_password_preencho(String password) {
+	@Quando("no campo Password informo {string}")
+	public void no_campo_password_informo(String password) {
 	    loginPage.setPassword(password);
 	}
 
@@ -43,8 +47,16 @@ public class LoginSteps {
 		Assert.assertEquals(usuario, loginPage.obterUsuario());
 	}
 
-	@Entao("o sistema exibe a mensagem {string}")
-	public void o_sistema_exibe_a_mensagem(String string) {
-		System.out.println("3");
+	@Entao("o sistema mostra a mensagem {string}")
+	public void o_sistema_mostra_a_mensagem(String mensagem) {
+		Assert.assertEquals(mensagem, loginPage.obterMsgLoginInvalido());
 	}
+	
+	@After
+	public void finaliza () {
+		if (Propriedades.FECHAR_BROWSER) {
+//			killDriver();
+		}
+	}
+	
 }

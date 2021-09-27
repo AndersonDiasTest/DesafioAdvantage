@@ -1,0 +1,88 @@
+# language: pt
+
+Funcionalidade: Cadastro de usuario
+
+Como um usuario
+Quero realizar meu cadastro no sistema
+Para realizar login
+
+@ignore
+Esquema do Cenario: Realizar cadastro com sucesso
+	Dado que eu acesso a aplicacao
+	Quando clico no icone de usuario
+	E clico na opcao Create New Account
+	E no campo Username preencho "<nome de usuario>"
+	E no campo Email preencho "<email>"
+	E no campo Password preencho "<senha>"
+	E no campo Confirm Password preencho "<confirmacao senha>"
+	E no campo First Name preencho "<primeiro nome>"
+	E no campo Last Name preencho "<ultimo nome>"
+	E no campo Phone Number preencho "<telefone>"
+	E no campo Country preencho "<pais>"
+	E no campo City preencho "<cidade>"
+	E no campo Address preencho "<endereco>"
+	E no campo State Province Region preencho "<estado>"
+	E no campo Postal Code preencho "<cep>"
+	E verifico que a opcao Receber ofertas esta marcada
+	E clico na opcao Aceitar termos
+	E clico na opcao Register
+	Entao o sistema exibe a mensagem "<mensagem>"
+	E direciona para a home page
+	
+Exemplos:
+| nome de usuario   | email    | senha | confirmacao senha | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep |
+|Conta de Teste     |teste@mail|Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|
+
+@ignore
+Esquema do Cenario: Realizar cadastro sem os campos obrigatorios
+	Dado que eu acesso a aplicacao
+	Quando clico no icone de usuario
+	E clico na opcao Create New Account
+	E no campo Username preencho "<nome de usuario>"
+	E no campo Email preencho "<email>"
+	E no campo Password preencho "<senha>"
+	E no campo Confirm Password preencho "<confirmacao senha>"
+	E no campo First Name preencho "<primeiro nome>"
+	E no campo Last Name preencho "<ultimo nome>"
+	E no campo Phone Number preencho "<telefone>"
+	E no campo Country preencho "<pais>"
+	E no campo City preencho "<cidade>"
+	E no campo Address preencho "<endereco>"
+	E no campo State Province Region preencho "<estado>"
+	E no campo Postal Code preencho "<cep>"
+	E verifico que a opcao Receber ofertas esta marcada
+	E clico na opcao Aceitar termos
+	Entao o sistema exibe a mensagem "<mensagem>"
+	E a opcao Register fica desabilitado
+
+Exemplos:
+| nome de usuario   | email    | senha | confirmacao senha | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep | mensagem |
+|                   |teste@mail|Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Username field is required|
+|Conta de Teste     |          |Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Email field is required|
+|Conta de Teste     |teste@mail|       |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Password field is required|
+|Conta de Teste     |teste@mail|Adv1   |                   |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Confirm assword field is required|
+
+Esquema do Cenario: Realizar cadastro de um usuario que ja existe
+	Dado que eu acesso a aplicacao
+	Quando clico no icone de usuario
+	E clico na opcao Create New Account
+	E no campo Username preencho "<nome de usuario>"
+	E no campo Email preencho "<email>"
+	E no campo Password preencho "<senha>"
+	E no campo Confirm Password preencho "<confirmacao senha>"
+	E no campo First Name preencho "<primeiro nome>"
+	E no campo Last Name preencho "<ultimo nome>"
+	E no campo Phone Number preencho "<telefone>"
+	E no campo Country preencho "<pais>"
+	E no campo City preencho "<cidade>"
+	E no campo Address preencho "<endereco>"
+	E no campo State Province Region preencho "<estado>"
+	E no campo Postal Code preencho "<cep>"
+	E verifico que a opcao Receber ofertas esta marcada
+	E clico na opcao Aceitar termos
+	E clico na opcao Register
+	Entao o sistema exibe a mensagem "<mensagem>"
+
+Exemplos:
+| nome de usuario   | email    | senha | confirmacao senha | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep | mensagem |
+|Conta de Teste     |teste@mail|Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|User name already exists|

@@ -6,11 +6,13 @@ Como um usuario
 Quero realizar login
 Para acessar a tela inicial
 
-Esquema do Cenario: Realizar login com sucesso
+Contexto:
 	Dado que eu acesso a aplicacao
 	Quando clico no icone de usuario
-	E no campo Username preencho "<nome de usuario>"
-	E no campo Password preencho "<senha>"
+
+Esquema do Cenario: Realizar login com sucesso
+	E no campo Username informo "<nome de usuario>"
+	E no campo Password informo "<senha>"
 	E clico na opcao Sign In
 	Entao o sistema exibe o nome do usuario logado no canto superior da tela
 	
@@ -18,15 +20,12 @@ Exemplos:
 | nome de usuario   | senha |
 | Nomes             |Mail1  |
 
-@ignore
 Esquema do Cenario: Nao realizar login com senha incorreta
-	Dado que eu acesso a aplicacao
-	Quando clico no icone de usuario
-	E no campo Username preencho "<nome de usuario>"
-	E no campo Password preencho "<senha>"
+	E no campo Username informo "<nome de usuario>"
+	E no campo Password informo "<senha>"
 	E clico na opcao Sign In
-	Entao o sistema exibe a mensagem "<mensagem>"
+	Entao o sistema mostra a mensagem "<mensagem>"
 
 Exemplos:
 | nome de usuario   | senha | mensagem |
-| Conta de Teste    | pass  |Incorret user name or password.|
+| Conta de Teste    | pass  |Incorrect user name or password.|
