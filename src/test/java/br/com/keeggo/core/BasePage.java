@@ -2,8 +2,6 @@ package br.com.keeggo.core;
 
 import static br.com.keeggo.core.DriverFactory.getDriver;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -41,11 +39,7 @@ public class BasePage {
 	public void selecionaOpcaoCombo(String campo, String valor) {
 		WebElement elemento = getDriver().findElement(By.name(campo));
 		Select combo = new Select(elemento);
-//		combo.selectByIndex(1);
-		List<WebElement> opcoes = combo.getOptions();
-		for (WebElement webElement : opcoes) {
-			System.out.println(webElement.getAttribute("value"));
-		}
+		combo.selectByVisibleText(valor);
 	}
 
 	// ------------recuperar valores--------------------//
@@ -57,16 +51,24 @@ public class BasePage {
 	public boolean checkboxEstaSelecionado(String campo) {
 		return getDriver().findElement(By.name(campo)).isSelected();
 	}
+	
+	public String obterMensagem(String campo) {
+		return getDriver().findElement(By.xpath("//*[@name='" + campo + "']/../label[@class='invalid']")).getText();
+	}
+	
+	public boolean botaoEstaHabilitado(String campo) {
+		return getDriver().findElement(By.id(campo)).isEnabled();
+	}
 
 	// -------------------wait-----------------------//
 
 	public void esperaElementoSerClicavel(By by) {
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
 		wait.until(ExpectedConditions.elementToBeClickable(by));
 	}
 
 	public void esperaMensagem(By by, String mensagem) {
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
 		wait.until(ExpectedConditions.textToBe(by, mensagem));
 	}
 }

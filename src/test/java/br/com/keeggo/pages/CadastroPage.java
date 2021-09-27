@@ -77,6 +77,22 @@ public class CadastroPage extends BasePage {
 
 	public void aceitaTermos() {
 		clicaCheckbox("i_agree");
-		
+	}
+	
+	public void clicaRegister() {
+		clicaBotao("register_btnundefined");
+	}
+	
+	public String obterMsgCampoObrigatorio(String campo) {
+		return obterMensagem(campo);
+	}
+	
+	public String obterMsgContaJaExistente() {
+		esperaMensagem(By.xpath("//*[@id='register_btnundefined']/../../label[1]"), "User name already exists");
+		return obterTexto(By.xpath("//*[@id='register_btnundefined']/../../label[1]"));
+	}
+	
+	public boolean botaoRegisterHabilitado() {
+		return botaoEstaHabilitado("register_btnundefined");
 	}
 }

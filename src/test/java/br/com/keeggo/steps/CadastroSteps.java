@@ -1,12 +1,8 @@
 package br.com.keeggo.steps;
 
-import static br.com.keeggo.core.DriverFactory.killDriver;
-
 import org.junit.Assert;
 
-import br.com.keeggo.core.Propriedades;
 import br.com.keeggo.pages.CadastroPage;
-import io.cucumber.java.After;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 
@@ -85,21 +81,19 @@ public class CadastroSteps {
 	}
 	@Quando("clico na opcao Register")
 	public void clicoNaOpcaoRegister() {
-	    
+	    cadastroPage.clicaRegister();
 	}
-	@Entao("o sistema exibe a mensagem {string}")
-	public void oSistemaExibeAMensagem(String mensagem) {
-	    
+	@Entao("o sistema exibe a mensagem {string} abaixo do campo {string}")
+	public void oSistemaExibeAMensagem(String mensagem, String campo) {
+	    Assert.assertEquals(mensagem, cadastroPage.obterMsgCampoObrigatorio(campo));
 	}
 	@Entao("a opcao Register fica desabilitado")
 	public void aOpcaoRegisterFicaDesabilitado() {
-	    
+	    Assert.assertFalse(cadastroPage.botaoRegisterHabilitado());
 	}
-	
-	@After
-	public void finaliza () {
-		if (Propriedades.FECHAR_BROWSER) {
-//			killDriver();
-		}
+	@Entao("o sistema exibe a mensagem {string}")
+	public void oSistemaExibeAMensagem(String mensagem) {
+		Assert.assertEquals(mensagem, cadastroPage.obterMsgContaJaExistente());
 	}
+
 }
