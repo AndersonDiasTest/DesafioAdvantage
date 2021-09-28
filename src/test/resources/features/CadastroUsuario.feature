@@ -11,7 +11,7 @@ Contexto:
 	Quando clico no icone de usuario
 	E clico na opcao Create New Account
 
-@ignore
+
 Esquema do Cenario: Realizar cadastro com sucesso
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"
@@ -28,12 +28,12 @@ Esquema do Cenario: Realizar cadastro com sucesso
 	E verifico que a opcao Receber ofertas esta marcada
 	E clico na opcao Aceitar termos
 	E clico na opcao Register
-	Entao o sistema exibe a mensagem "<mensagem>"
+	Entao o sistema exibe o nome do usuario logado no canto superior da tela
 	E direciona para a home page
 	
 Exemplos:
-| nome de usuario   | email    | senha | confirmacao senha | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep |
-|Conta de Teste     |teste@mail|Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|
+| nome de usuario    | email       | senha  | confirmacao senha  | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep |
+|Conta Advantage     |teste@mail.com|Adva1   |Adva1           |Lucio          |Mauro        |9999      |Brazil|Brasilia|Centro    |DF      |72000|
 
 @ignore
 Esquema do Cenario: Realizar cadastro sem os campos obrigatorios
@@ -61,7 +61,7 @@ Exemplos:
 |Conta de Teste     |teste@mail|       |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Password field is required        |passwordRegisterPage|
 |Conta de Teste     |teste@mail|Adv1   |                   |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Confirm password field is required|confirm_passwordRegisterPage|
 
-
+@ignore
 Esquema do Cenario: Realizar cadastro de um usuario que ja existe
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"

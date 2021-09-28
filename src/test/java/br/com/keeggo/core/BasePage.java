@@ -3,6 +3,7 @@ package br.com.keeggo.core;
 import static br.com.keeggo.core.DriverFactory.getDriver;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -10,22 +11,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-	public void acessarPaginaInicial() {
-		getDriver().get("https://advantageonlineshopping.com/#/");
-	}
 
-	public void clicaBotaoUsuario() {
-		esperaElementoSerClicavel(By.id("headphonesImg"));
-		clicaBotao("menuUser");
-	}
 
 	public void preencheByName(String campo, String valor) {
 		getDriver().findElement(By.name(campo)).clear();
 		getDriver().findElement(By.name(campo)).sendKeys(valor);
 	}
+	
+	public void preencheById(String campo, String valor) {
+		getDriver().findElement(By.id(campo)).clear();
+		getDriver().findElement(By.id(campo)).sendKeys(valor);
+	}
 
 	public void clicaBotao(String campo) {
-		getDriver().findElement(By.id(campo)).click();
+		clicaBotao(By.id(campo));
+	}
+	
+	public void clicaBotao(By by) {
+		getDriver().findElement(by).click();
 	}
 
 	public void clicaLink(String campo) {
@@ -40,6 +43,10 @@ public class BasePage {
 		WebElement elemento = getDriver().findElement(By.name(campo));
 		Select combo = new Select(elemento);
 		combo.selectByVisibleText(valor);
+	}
+	
+	public void clicaTeclado(Keys key) {
+		getDriver().findElement(By.id("autoComplete")).sendKeys(key);
 	}
 
 	// ------------recuperar valores--------------------//
@@ -70,5 +77,11 @@ public class BasePage {
 	public void esperaMensagem(By by, String mensagem) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
 		wait.until(ExpectedConditions.textToBe(by, mensagem));
+	}
+	
+	public void esperaElementoFicarInvisivel() {
+		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+		wait.until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='PopUp']")));
 	}
 }

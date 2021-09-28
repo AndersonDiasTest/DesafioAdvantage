@@ -80,6 +80,7 @@ public class CadastroPage extends BasePage {
 	}
 	
 	public void clicaRegister() {
+		esperaElementoSerClicavel(By.id("register_btnundefined"));
 		clicaBotao("register_btnundefined");
 	}
 	

@@ -21,7 +21,7 @@ public class LoginPage extends BasePage {
 		clicaBotao("sign_in_btnundefined");
 	}
 	
-	public String obterUsuario() {
+	public String obterUsuarioLogado() {
 		esperaElementoSerClicavel(By.xpath("//a[@id='menuUserLink']/span"));
 		return obterTexto(By.xpath("//a[@id='menuUserLink']/span"));
 	}

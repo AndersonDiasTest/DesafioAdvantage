@@ -9,8 +9,8 @@ Para visualizar os produtos para compra
 Cenario: Consultar produto existente
 	Dado que eu acesso a aplicacao
 	Quando clico no icone de usuario
-	E no campo Username preencho "Nomes"
-	E no campo Password preencho "Mail1"
+	E no campo Username informo "Nomes"
+	E no campo Password informo "Mail1"
 	E clico na opcao Sign In
 	E clico no icone de Pesquisa
 	E no campo de pesquisa preencho "Tablet"

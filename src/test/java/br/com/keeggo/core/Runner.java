@@ -9,14 +9,16 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/ConsultarProduto.feature",
+		features = "src/test/resources/features/CadastroUsuario.feature",
 		glue = "br.com.keeggo.steps",
 		tags = "not @ignore",
 		monochrome = true,
-		dryRun = true,
+		dryRun = false,
 		snippets = SnippetType.CAMELCASE
 		)
 public class Runner {
+	
+
 
 	@After
 	public void finaliza() {

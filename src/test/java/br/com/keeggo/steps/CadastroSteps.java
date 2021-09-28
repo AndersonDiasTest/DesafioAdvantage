@@ -3,12 +3,14 @@ package br.com.keeggo.steps;
 import org.junit.Assert;
 
 import br.com.keeggo.pages.CadastroPage;
+import br.com.keeggo.pages.HomePage;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 
 public class CadastroSteps {
 	
 	private CadastroPage cadastroPage = new CadastroPage();
+	private HomePage homePage = new HomePage();
 
 //	@Dado("que eu acesso a aplicacao")
 //	public void queEuAcessoAAplicacao() {
@@ -94,6 +96,10 @@ public class CadastroSteps {
 	@Entao("o sistema exibe a mensagem {string}")
 	public void oSistemaExibeAMensagem(String mensagem) {
 		Assert.assertEquals(mensagem, cadastroPage.obterMsgContaJaExistente());
+	}
+	@Entao("direciona para a home page")
+	public void direcionaParaAHomePage() {
+	    Assert.assertEquals("https://www.advantageonlineshopping.com/#/", homePage.obterUrlAtual());
 	}
 
 }
