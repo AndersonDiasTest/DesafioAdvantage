@@ -1,9 +1,16 @@
 package br.com.keeggo.steps;
 
+import java.io.UnsupportedEncodingException;
+
 import org.junit.Assert;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import br.com.keeggo.pages.HomePage;
 import br.com.keeggo.pages.LoginPage;
+import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
