@@ -1,6 +1,5 @@
 package br.com.keeggo.core;
 
-import org.junit.After;
 import org.junit.runner.RunWith;
 
 import io.cucumber.junit.Cucumber;
@@ -20,11 +19,4 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 public class Runner {
 	
 
-
-	@After
-	public void finaliza() {
-		if (Propriedades.FECHAR_BROWSER) {
-//			killDriver();
-		}
-	}
 }

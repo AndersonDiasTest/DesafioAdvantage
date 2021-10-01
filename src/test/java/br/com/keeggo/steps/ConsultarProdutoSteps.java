@@ -3,10 +3,14 @@ package br.com.keeggo.steps;
 import static br.com.keeggo.core.DriverFactory.getDriver;
 
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import br.com.keeggo.pages.HomePage;
 import br.com.keeggo.pages.ProdutosPage;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 
@@ -40,4 +44,6 @@ public class ConsultarProdutoSteps {
 	public void oProdutoEhExibido() {
 	    Assert.assertEquals("HP ELITEPAD 1000 G2 TABLET", produtosPage.obterTituloProduto());
 	}
+	
+
 }

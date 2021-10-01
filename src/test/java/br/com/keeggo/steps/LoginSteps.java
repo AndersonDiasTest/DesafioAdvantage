@@ -1,16 +1,18 @@
 package br.com.keeggo.steps;
 
-import java.io.UnsupportedEncodingException;
+import static br.com.keeggo.core.DriverFactory.getDriver;
+import static br.com.keeggo.core.DriverFactory.killDriver;
 
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
+import br.com.keeggo.core.Propriedades;
 import br.com.keeggo.pages.HomePage;
 import br.com.keeggo.pages.LoginPage;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -55,6 +57,20 @@ public class LoginSteps{
 	@Entao("o sistema mostra a mensagem {string}")
 	public void o_sistema_mostra_a_mensagem(String mensagem) {
 		Assert.assertEquals(mensagem, loginPage.obterMsgLoginInvalido());
+	}
+	
+	@AfterStep
+	public void addScreenshot(Scenario cenario) {
+		
+		final byte [] screenshot = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);
+		cenario.attach(screenshot, "image/png", "image");
+	}
+	
+	@After
+	public void finaliza() {
+		if (Propriedades.FECHAR_BROWSER) {
+			killDriver();
+		}
 	}
 	
 }
