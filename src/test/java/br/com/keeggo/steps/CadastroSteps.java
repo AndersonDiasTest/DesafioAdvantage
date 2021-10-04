@@ -4,22 +4,14 @@ import org.junit.Assert;
 
 import br.com.keeggo.pages.CadastroPage;
 import br.com.keeggo.pages.HomePage;
-import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt. Entao;
 import io.cucumber.java.pt.Quando;
 
 public class CadastroSteps {
 	
 	private CadastroPage cadastroPage = new CadastroPage();
 	private HomePage homePage = new HomePage();
-
-//	@Dado("que eu acesso a aplicacao")
-//	public void queEuAcessoAAplicacao() {
-//	    cadastroPage.acessarPaginaInicial();
-//	}
-//	@Quando("clico no icone de usuario")
-//	public void clicoNoIconeDeUsuario() {
-//	    cadastroPage.clicaBotaoUsuario();
-//	}
+	private String usuario;
 	
 	@Quando("clico na opcao Create New Account")
 	public void clicoNaOpcaoCreateNewAccount() {
@@ -27,6 +19,7 @@ public class CadastroSteps {
 	}
 	@Quando("no campo Username preencho {string}")
 	public void noCampoUsernamePreencho(String username) {
+		this.usuario = username;
 	    cadastroPage.setUsername(username);
 	}
 	@Quando("no campo Email preencho {string}")
@@ -54,7 +47,7 @@ public class CadastroSteps {
 		cadastroPage.setPhoneNumber(phoneNumber);
 	}
 	@Quando("no campo Country preencho {string}")
-	public void noCampoCountryPreencho(String country) {
+	public void noCampoCountryPreencho(String country) throws InterruptedException {
 		cadastroPage.setCountry(country);
 	}
 	@Quando("no campo City preencho {string}")
@@ -91,15 +84,19 @@ public class CadastroSteps {
 	}
 	@Entao("a opcao Register fica desabilitado")
 	public void aOpcaoRegisterFicaDesabilitado() {
-	    Assert.assertFalse(cadastroPage.botaoRegisterHabilitado());
+	    Assert.assertFalse(cadastroPage.botaoRegisterEstaHabilitado());
 	}
 	@Entao("o sistema exibe a mensagem {string}")
 	public void oSistemaExibeAMensagem(String mensagem) {
 		Assert.assertEquals(mensagem, cadastroPage.obterMsgContaJaExistente());
 	}
+	@Entao("o sistema realiza o login do usuario e exibe o nome no canto superior da tela")
+	public void oSistemaRealizaOLoginDoUsuarioEExibeONomeNoCantoSuperiorDaTela() {
+		Assert.assertEquals(usuario, homePage.obterUsuarioLogado());
+	}
 	@Entao("direciona para a home page")
 	public void direcionaParaAHomePage() {
-	    Assert.assertEquals("https://www.advantageonlineshopping.com/#/", homePage.obterUrlAtual());
+	    Assert.assertEquals("https://advantageonlineshopping.com/#/", homePage.obterUrlAtual());
 	}
 
 }

@@ -28,14 +28,14 @@ Esquema do Cenario: Realizar cadastro com sucesso
 	E verifico que a opcao Receber ofertas esta marcada
 	E clico na opcao Aceitar termos
 	E clico na opcao Register
-	Entao o sistema exibe o nome do usuario logado no canto superior da tela
+	Entao o sistema realiza o login do usuario e exibe o nome no canto superior da tela
 	E direciona para a home page
 	
 Exemplos:
-| nome de usuario    | email       | senha  | confirmacao senha  | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep |
-|Conta Advantage     |teste@mail.com|Adva1   |Adva1           |Lucio          |Mauro        |9999      |Brazil|Brasilia|Centro    |DF      |72000|
+| nome de usuario   | email        | senha  | confirmacao senha  | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep |
+|ContaAdvantageD    |teste@mail.com|Adva1   |Adva1               |Lucio          |Mauro        |9999      |Brazil|Brasilia|Centro    |DF      |72000|
 
-@ignore
+
 Esquema do Cenario: Realizar cadastro sem os campos obrigatorios
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"
@@ -59,9 +59,9 @@ Exemplos:
 |                   |teste@mail|Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Username field is required        |usernameRegisterPage|
 |Conta de Teste     |          |Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Email field is required           |emailRegisterPage|
 |Conta de Teste     |teste@mail|       |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Password field is required        |passwordRegisterPage|
-|Conta de Teste     |teste@mail|Adv1   |                   |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Confirm password field is required|confirm_passwordRegisterPage|
+#|Conta de Teste     |teste@mail|Adv1   |                   |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Confirm password field is required|confirm_passwordRegisterPage|#
 
-@ignore
+
 Esquema do Cenario: Realizar cadastro de um usuario que ja existe
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"

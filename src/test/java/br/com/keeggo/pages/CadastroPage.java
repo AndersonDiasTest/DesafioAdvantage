@@ -46,8 +46,9 @@ public class CadastroPage extends BasePage {
 		preencheByName("phone_numberRegisterPage", phoneNumber);
 	}
 	
-	public void setCountry(String country) {
+	public void setCountry(String country) throws InterruptedException {
 		esperaElementoSerClicavel(By.name("countryListboxRegisterPage"));
+		Thread.sleep(5000);
 		selecionaOpcaoCombo("countryListboxRegisterPage", country);
 	}
 
@@ -93,7 +94,7 @@ public class CadastroPage extends BasePage {
 		return obterTexto(By.xpath("//*[@id='register_btnundefined']/../../label[1]"));
 	}
 	
-	public boolean botaoRegisterHabilitado() {
+	public boolean botaoRegisterEstaHabilitado() {
 		return botaoEstaHabilitado("register_btnundefined");
 	}
 }

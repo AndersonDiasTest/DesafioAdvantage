@@ -51,7 +51,7 @@ public class LoginSteps{
 
 	@Entao("o sistema exibe o nome do usuario logado no canto superior da tela")
 	public void o_sistema_exibe_o_nome_do_usuario_logado_no_canto_superior_da_tela() {
-		Assert.assertEquals(usuario, loginPage.obterUsuarioLogado());
+		Assert.assertEquals(usuario, homePage.obterUsuarioLogado());
 	}
 
 	@Entao("o sistema mostra a mensagem {string}")

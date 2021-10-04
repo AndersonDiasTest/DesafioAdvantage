@@ -18,6 +18,11 @@ public class HomePage extends BasePage {
 		clicaBotao("menuUser");
 	}
 	
+	public String obterUsuarioLogado() {
+		esperaElementoSerClicavel(By.xpath("//a[@id='menuUserLink']/span"));
+		return obterTexto(By.xpath("//a[@id='menuUserLink']/span"));
+	}
+	
 	public void clicaBotaoPesquisa() {
 		esperaElementoFicarInvisivel();
 		esperaElementoSerClicavel(By.id("menuSearch"));
