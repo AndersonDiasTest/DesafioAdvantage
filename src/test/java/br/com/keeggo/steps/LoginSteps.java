@@ -59,6 +59,11 @@ public class LoginSteps{
 		Assert.assertEquals(mensagem, loginPage.obterMsgLoginInvalido());
 	}
 	
+	@Entao("exibe o botao Sign In desabilitado")
+	public void exibeOBotaoSignInDesabilitado() {
+	    Assert.assertFalse(loginPage.botaoSignInEstaHabilitado());
+	}
+	
 	@AfterStep
 	public void addScreenshot(Scenario cenario) {
 		

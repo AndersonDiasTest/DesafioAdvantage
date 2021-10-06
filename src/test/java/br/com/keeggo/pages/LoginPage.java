@@ -31,4 +31,8 @@ public class LoginPage extends BasePage {
 		return obterTexto(By.id("signInResultMessage"));
 	}
 	
+	public boolean botaoSignInEstaHabilitado() {
+		return botaoEstaHabilitado("sign_in_btnundefined");
+	}
+	
 }

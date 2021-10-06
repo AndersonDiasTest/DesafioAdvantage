@@ -36,7 +36,7 @@ Exemplos:
 |ContaAdvantageD    |teste@mail.com|Adva1   |Adva1               |Lucio          |Mauro        |9999      |Brazil|Brasilia|Centro    |DF      |72000|
 
 
-Esquema do Cenario: Realizar cadastro sem os campos obrigatorios
+Esquema do Cenario: Não realizar cadastro sem os campos obrigatorios
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"
 	E no campo Password preencho "<senha>"
@@ -59,7 +59,7 @@ Exemplos:
 |                   |teste@mail|Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Username field is required        |usernameRegisterPage|
 |Conta de Teste     |          |Adv1   |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Email field is required           |emailRegisterPage|
 |Conta de Teste     |teste@mail|       |Adv1               |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Password field is required        |passwordRegisterPage|
-#|Conta de Teste     |teste@mail|Adv1   |                   |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Confirm password field is required|confirm_passwordRegisterPage|#
+|Conta de Teste     |teste@mail|Adv1   |                   |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|Confirm password field is required|confirm_passwordRegisterPage|
 
 
 Esquema do Cenario: Realizar cadastro de um usuario que ja existe

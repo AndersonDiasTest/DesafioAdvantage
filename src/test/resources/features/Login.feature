@@ -10,6 +10,7 @@ Contexto:
 	Dado que eu acesso a aplicacao
 	Quando clico no icone de usuario
 
+@ignore
 Esquema do Cenario: Realizar login com sucesso
 	E no campo Username informo "<nome de usuario>"
 	E no campo Password informo "<senha>"
@@ -20,6 +21,7 @@ Exemplos:
 | nome de usuario   | senha |
 | Nomes             |Mail1  |
 
+@ignore
 Esquema do Cenario: Nao realizar login com senha incorreta
 	E no campo Username informo "<nome de usuario>"
 	E no campo Password informo "<senha>"
@@ -29,3 +31,15 @@ Esquema do Cenario: Nao realizar login com senha incorreta
 Exemplos:
 | nome de usuario   | senha | mensagem |
 | Conta de Teste    | pass  |Incorrect user name or password.|
+
+
+Esquema do Cenario: Nao realizar login sem os campos obrigatorios
+	E no campo Username informo "<nome de usuario>"
+	E no campo Password informo "<senha>"
+	Entao o sistema exibe a mensagem "<mensagem>" abaixo do campo "<campo>"
+	E exibe o botao Sign In desabilitado
+	
+Exemplos:
+| nome de usuario   | senha | mensagem                     | campo  |
+|                   | pass  |Username field is required    |username|
+| Conta de Teste    |       |Password field is required    |password|
