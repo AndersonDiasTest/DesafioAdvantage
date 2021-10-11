@@ -59,6 +59,11 @@ public class LoginSteps{
 		Assert.assertEquals(mensagem, loginPage.obterMsgLoginInvalido());
 	}
 	
+	@Entao("o sistema mostra a mensagem {string} abaixo do campo {string}")
+	public void oSistemaMostraAMensagem(String mensagem, String campo) {
+	    Assert.assertEquals(mensagem, loginPage.obterMsgCampoObrigatorio(campo));
+	}
+	
 	@Entao("exibe o botao Sign In desabilitado")
 	public void exibeOBotaoSignInDesabilitado() {
 	    Assert.assertFalse(loginPage.botaoSignInEstaHabilitado());
@@ -66,16 +71,19 @@ public class LoginSteps{
 	
 	@AfterStep
 	public void addScreenshot(Scenario cenario) {
-		
-		final byte [] screenshot = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);
-		cenario.attach(screenshot, "image/png", "image");
+		if(Propriedades.TIRAR_PRINT) {
+			final byte [] screenshot = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);
+			cenario.attach(screenshot, "image/png", "image");
+		}
 	}
 	
 	@After
-	public void finaliza() {
+	public void fechaBrowserAposTeste() {
 		if (Propriedades.FECHAR_BROWSER) {
 			killDriver();
 		}
 	}
+	
+
 	
 }

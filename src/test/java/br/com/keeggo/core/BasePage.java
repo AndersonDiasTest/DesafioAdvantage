@@ -5,13 +5,12 @@ import static br.com.keeggo.core.DriverFactory.getDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
-
-
 
 	public void preencheByName(String campo, String valor) {
 		getDriver().findElement(By.name(campo)).clear();
@@ -48,6 +47,16 @@ public class BasePage {
 	public void clicaTeclado(Keys key) {
 		getDriver().findElement(By.id("autoComplete")).sendKeys(key);
 	}
+	
+	public void removeFocoCampo() {
+		getDriver().findElement(By.id("signInResultMessage")).click();
+	}
+	
+	public void moverSlider(By by, int valorEixoX) {
+		Actions acao = new Actions(getDriver());
+		WebElement slider = getDriver().findElement(by);
+		acao.dragAndDropBy(slider, valorEixoX, 0).perform();
+	}
 
 	// ------------recuperar valores--------------------//
 
@@ -60,7 +69,8 @@ public class BasePage {
 	}
 	
 	public String obterMensagem(String campo) {
-		return getDriver().findElement(By.xpath("//*[@name='" + campo + "']/../label[@class='invalid']")).getText();
+		return getDriver()
+				.findElement(By.xpath("//*[@name='" + campo + "']/../label[@class='invalid']")).getText();
 	}
 	
 	public boolean botaoEstaHabilitado(String campo) {
@@ -70,17 +80,18 @@ public class BasePage {
 	// -------------------wait-----------------------//
 
 	public void esperaElementoSerClicavel(By by) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 20);
 		wait.until(ExpectedConditions.elementToBeClickable(by));
 	}
 
 	public void esperaMensagem(By by, String mensagem) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 20);
 		wait.until(ExpectedConditions.textToBe(by, mensagem));
 	}
 	
+	//refatorar para page correspondente
 	public void esperaElementoFicarInvisivel() {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 20);
 		wait.until(ExpectedConditions
 				.invisibilityOfElementLocated(By.xpath("//div[@class='PopUp']")));
 	}

@@ -1,5 +1,6 @@
 # language: pt
 
+@cadastro_usuario
 Funcionalidade: Cadastro de usuario
 
 Como um usuario
@@ -11,7 +12,7 @@ Contexto:
 	Quando clico no icone de usuario
 	E clico na opcao Create New Account
 
-
+@ignore
 Esquema do Cenario: Realizar cadastro com sucesso
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"

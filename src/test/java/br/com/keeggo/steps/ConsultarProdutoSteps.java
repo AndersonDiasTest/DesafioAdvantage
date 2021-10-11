@@ -29,7 +29,7 @@ public class ConsultarProdutoSteps {
 	public void noCampoDePesquisaPreencho(String produto) {
 	    homePage.setCampoPesquisa(produto);
 	}
-	@Quando("clico na opcao Pesquisar")
+	@Quando("pressiono a tecla Enter para pesquisar")
 	public void clicoNaOpcaoPesquisar() {
 	    homePage.clicaEnterParaPesquisa();
 	}
@@ -41,6 +41,37 @@ public class ConsultarProdutoSteps {
 	public void oProdutoEhExibido() {
 	    Assert.assertEquals("HP ELITEPAD 1000 G2 TABLET", produtosPage.obterTituloProduto());
 	}
-	
+	@Entao("o sistema exibe mensagem {string}")
+	public void oSistemaExibeMensagem(String mensagem) {
+	    Assert.assertEquals(mensagem, produtosPage.obterMensagemProdutoNaoEncontrado());
+	}
+	@Quando("clico na categoria Mice")
+	public void clicoNaCategoriaMice() {
+	    produtosPage.clicaNaCategoriaMice();
+	}
+	@Quando("clico no filtro Price")
+	public void clicoNoFiltroPrice() {
+	    produtosPage.clicaAccordionPrice();
+	}
+	@Quando("seleciono a faixa de preço")
+	public void selecionoAFaixaDePreço() {
+	    produtosPage.moverSliderPrice(80);	    
+	}
+	@Quando("clico no filtro Scroller Type")
+	public void clicoNoFiltroScrollerType() {
+		 produtosPage.clicaAccordionScrollerType();
+	}
+	@Quando("seleciono o tipo Scroll Ball")
+	public void selecionoOTipoScrollBall() {
+		 produtosPage.clicaCheckboxScrollBall();
+	}
+	@Quando("clico no produto")
+	public void clicoNoProduto() {
+	    produtosPage.clicaProduto("Kensington Orbit 72352 Trackball");
+	}
+	@Entao("a pagina do produto eh exibida")
+	public void aPaginaDoProdutoEhExibida() {
+	    Assert.assertEquals("KENSINGTON ORBIT 72352 TRACKBALL", produtosPage.obterTituloProduto());
+	}
 
 }

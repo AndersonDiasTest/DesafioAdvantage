@@ -34,5 +34,10 @@ public class LoginPage extends BasePage {
 	public boolean botaoSignInEstaHabilitado() {
 		return botaoEstaHabilitado("sign_in_btnundefined");
 	}
+
+	public String obterMsgCampoObrigatorio(String campo) {
+		removeFocoCampo();
+		return obterMensagem(campo);
+	}
 	
 }
