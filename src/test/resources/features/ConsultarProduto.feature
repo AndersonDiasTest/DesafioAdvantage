@@ -36,7 +36,7 @@ Exemplos:
 Cenario: Consultar produto por categoria
 	E clico na categoria Mice
 	E clico no filtro Price
-	E seleciono a faixa de preço
+	E seleciono a faixa de preco
 	E clico no filtro Scroller Type
 	E seleciono o tipo Scroll Ball
 	E clico no produto

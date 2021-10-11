@@ -53,7 +53,7 @@ public class ConsultarProdutoSteps {
 	public void clicoNoFiltroPrice() {
 	    produtosPage.clicaAccordionPrice();
 	}
-	@Quando("seleciono a faixa de preço")
+	@Quando("seleciono a faixa de preco")
 	public void selecionoAFaixaDePreço() {
 	    produtosPage.moverSliderPrice(80);	    
 	}

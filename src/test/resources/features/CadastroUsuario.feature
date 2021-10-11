@@ -36,7 +36,7 @@ Exemplos:
 | nome de usuario   | email        | senha  | confirmacao senha  | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep |
 |ContaAdvantageD    |teste@mail.com|Adva1   |Adva1               |Lucio          |Mauro        |9999      |Brazil|Brasilia|Centro    |DF      |72000|
 
-
+@ignore
 Esquema do Cenario: Não realizar cadastro sem os campos obrigatorios
 	E no campo Username preencho "<nome de usuario>"
 	E no campo Email preencho "<email>"

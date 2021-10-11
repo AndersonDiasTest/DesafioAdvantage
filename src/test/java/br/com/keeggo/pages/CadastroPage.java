@@ -80,6 +80,10 @@ public class CadastroPage extends BasePage {
 		clicaCheckbox("i_agree");
 	}
 	
+	public void aceitaEmailsPromocionais() {
+		clicaCheckbox("allowOffersPromotion");
+	}
+	
 	public void clicaRegister() {
 		esperaElementoSerClicavel(By.id("register_btnundefined"));
 		clicaBotao("register_btnundefined");

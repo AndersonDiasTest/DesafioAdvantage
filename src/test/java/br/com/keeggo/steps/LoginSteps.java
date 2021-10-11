@@ -3,6 +3,8 @@ package br.com.keeggo.steps;
 import static br.com.keeggo.core.DriverFactory.getDriver;
 import static br.com.keeggo.core.DriverFactory.killDriver;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -24,7 +26,7 @@ public class LoginSteps{
 	private String usuario;
 
 	@Dado("que eu acesso a aplicacao")
-	public void que_eu_acesso_a_aplicacao() {
+	public void que_eu_acesso_a_aplicacao() throws IOException {
 	    homePage.acessarPaginaInicial();
 	}
 
