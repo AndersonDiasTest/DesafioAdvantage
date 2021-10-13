@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/CadastroUsuario.feature",
+		features = "src/test/resources/features/",
 		glue = "br.com.keeggo.steps",
 		plugin = "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 		tags = "not @ignore",

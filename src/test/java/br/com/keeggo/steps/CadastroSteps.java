@@ -7,6 +7,7 @@ import org.junit.Assert;
 import br.com.keeggo.core.Utils;
 import br.com.keeggo.pages.CadastroPage;
 import br.com.keeggo.pages.HomePage;
+import br.com.keeggo.pages.LoginPage;
 import io.cucumber.java.pt. Entao;
 import io.cucumber.java.pt.Quando;
 
@@ -14,12 +15,13 @@ public class CadastroSteps {
 	
 	private CadastroPage cadastroPage = new CadastroPage();
 	private HomePage homePage = new HomePage();
+	private LoginPage loginPage = new LoginPage();
 	private Utils util = new Utils();
 	private String usuario;
 	
 	@Quando("clico na opcao Create New Account")
 	public void clicoNaOpcaoCreateNewAccount() {
-	    cadastroPage.clicaBotaoNovaConta();
+		loginPage.clicaBotaoNovaConta();
 	}
 	@Quando("no campo Username preencho {string}")
 	public void noCampoUsernamePreencho(String username) throws IOException {
@@ -87,18 +89,18 @@ public class CadastroSteps {
 		if (util.recuperaCelulaBoolean(12)) {
 			Assert.assertTrue(cadastroPage.permitePromocoesEstaSelecionado());
 		} else {
-			cadastroPage.aceitaEmailsPromocionais();
+			cadastroPage.clicaCheckboxEmailsPromocionais();
 		}
 	}
 	@Quando("clico na opcao Aceitar termos")
 	public void clicoNaOpcaoAceitarTermos() throws IOException {
 		if (util.recuperaCelulaBoolean(13)) {
-			cadastroPage.aceitaTermos();
+			cadastroPage.clicaCheckboxTermos();
 		}	    
 	}
 	@Quando("clico na opcao Register")
 	public void clicoNaOpcaoRegister() {
-	    cadastroPage.clicaRegister();
+	    cadastroPage.clicaBotaoRegister();
 	}
 	@Entao("o sistema exibe a mensagem {string} abaixo do campo {string}")
 	public void oSistemaExibeAMensagem(String mensagem, String campo) {

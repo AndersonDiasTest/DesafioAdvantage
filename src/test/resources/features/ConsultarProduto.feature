@@ -14,15 +14,15 @@ Contexto: Usuario logado
 	E no campo Password informo "Mail1"
 	E clico na opcao Sign In
 
-@ignore
+
 Cenario: Consultar produto existente
 	E clico no icone de Pesquisa
 	E no campo de pesquisa preencho "Tablet"
-	E pressiono a tecla Enter para pesquisar
+ 	E pressiono a tecla Enter para pesquisar
 	E clico em um dos produtos da lista
 	Entao o produto eh exibido
 	
-@ignore
+
 Esquema do Cenario: Consultar produto inexistente
 	E clico no icone de Pesquisa
 	E no campo de pesquisa preencho "<produto>"
@@ -32,6 +32,7 @@ Esquema do Cenario: Consultar produto inexistente
 Exemplos:
 | produto  |
 |computador|
+
 
 Cenario: Consultar produto por categoria
 	E clico na categoria Mice

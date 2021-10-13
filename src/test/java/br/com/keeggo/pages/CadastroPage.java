@@ -6,11 +6,6 @@ import br.com.keeggo.core.BasePage;
 
 public class CadastroPage extends BasePage {
 
-	public void clicaBotaoNovaConta() {
-		esperaElementoSerClicavel(By.linkText("CREATE NEW ACCOUNT"));
-		clicaLink("CREATE NEW ACCOUNT");
-	}
-
 	public void setUsername(String nome) {
 		esperaElementoSerClicavel(By.name("usernameRegisterPage"));
 		preencheByName("usernameRegisterPage", nome);
@@ -71,22 +66,22 @@ public class CadastroPage extends BasePage {
 		esperaElementoSerClicavel(By.name("postal_codeRegisterPage"));
 		preencheByName("postal_codeRegisterPage", postalCode);
 	}
+
+	public void clicaCheckboxEmailsPromocionais() {
+		clicaCheckboxByName("allowOffersPromotion");
+	}
+	
+	public void clicaCheckboxTermos() {
+		clicaCheckboxByName("i_agree");
+	}
+	
+	public void clicaBotaoRegister() {
+		esperaElementoSerClicavel(By.id("register_btnundefined"));
+		clicaBotaoById("register_btnundefined");
+	}
 	
 	public boolean permitePromocoesEstaSelecionado() {
 		return checkboxEstaSelecionado("allowOffersPromotion");
-	}
-
-	public void aceitaTermos() {
-		clicaCheckbox("i_agree");
-	}
-	
-	public void aceitaEmailsPromocionais() {
-		clicaCheckbox("allowOffersPromotion");
-	}
-	
-	public void clicaRegister() {
-		esperaElementoSerClicavel(By.id("register_btnundefined"));
-		clicaBotao("register_btnundefined");
 	}
 	
 	public String obterMsgCampoObrigatorio(String campo) {
@@ -94,7 +89,7 @@ public class CadastroPage extends BasePage {
 	}
 	
 	public String obterMsgContaJaExistente() {
-		esperaMensagem(By.xpath("//*[@id='register_btnundefined']/../../label[1]"), "User name already exists");
+		esperaMensagemSer(By.xpath("//*[@id='register_btnundefined']/../../label[1]"), "User name already exists");
 		return obterTexto(By.xpath("//*[@id='register_btnundefined']/../../label[1]"));
 	}
 	

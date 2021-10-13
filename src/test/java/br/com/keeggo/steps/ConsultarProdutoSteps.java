@@ -34,8 +34,8 @@ public class ConsultarProdutoSteps {
 	    homePage.clicaEnterParaPesquisa();
 	}
 	@Quando("clico em um dos produtos da lista")
-	public void clicoEmUmDosProdutosDaLista() throws InterruptedException {
-		homePage.clicaProduto("ELITEPAD");
+	public void clicoEmUmDosProdutosDaLista() {
+		produtosPage.clicaProduto("HP ElitePad 1000 G2 Tablet");
 	}
 	@Entao("o produto eh exibido")
 	public void oProdutoEhExibido() {
@@ -47,7 +47,7 @@ public class ConsultarProdutoSteps {
 	}
 	@Quando("clico na categoria Mice")
 	public void clicoNaCategoriaMice() {
-	    produtosPage.clicaNaCategoriaMice();
+	    homePage.clicaNaCategoriaMice();
 	}
 	@Quando("clico no filtro Price")
 	public void clicoNoFiltroPrice() {

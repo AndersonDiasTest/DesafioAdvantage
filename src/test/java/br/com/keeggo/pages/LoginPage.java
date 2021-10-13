@@ -6,6 +6,11 @@ import br.com.keeggo.core.BasePage;
 
 public class LoginPage extends BasePage {
 	
+	public void clicaBotaoNovaConta() {
+		esperaElementoSerClicavel(By.linkText("CREATE NEW ACCOUNT"));
+		clicaLink("CREATE NEW ACCOUNT");
+	}
+	
 	public void setUsername (String valor) {
 		esperaElementoSerClicavel(By.name("username"));
 		preencheByName("username", valor);
@@ -18,16 +23,11 @@ public class LoginPage extends BasePage {
 	
 	public void clicaBotaoSignIn() {
 		esperaElementoSerClicavel(By.id("sign_in_btnundefined"));
-		clicaBotao("sign_in_btnundefined");
-	}
-	
-	public String obterUsuarioLogado() {
-		esperaElementoSerClicavel(By.xpath("//a[@id='menuUserLink']/span"));
-		return obterTexto(By.xpath("//a[@id='menuUserLink']/span"));
+		clicaBotaoById("sign_in_btnundefined");
 	}
 
 	public String obterMsgLoginInvalido() {
-		esperaMensagem(By.id("signInResultMessage"), "Incorrect user name or password.");
+		esperaMensagemSer(By.id("signInResultMessage"), "Incorrect user name or password.");
 		return obterTexto(By.id("signInResultMessage"));
 	}
 	
@@ -36,7 +36,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public String obterMsgCampoObrigatorio(String campo) {
-		removeFocoCampo();
+		removeFocoCampo("signInResultMessage");
 		return obterMensagem(campo);
 	}
 	

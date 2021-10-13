@@ -1,7 +1,5 @@
 package br.com.keeggo.pages;
 
-import static br.com.keeggo.core.DriverFactory.getDriver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -10,12 +8,12 @@ import br.com.keeggo.core.BasePage;
 public class HomePage extends BasePage {
 
 	public void acessarPaginaInicial() {
-		getDriver().get("https://advantageonlineshopping.com/#/");
+		irParaUrl("https://advantageonlineshopping.com/#/");
 	}
 
 	public void clicaBotaoUsuario() {
 		esperaElementoSerClicavel(By.id("headphonesImg"));
-		clicaBotao("menuUser");
+		clicaBotaoById("menuUser");
 	}
 	
 	public String obterUsuarioLogado() {
@@ -24,28 +22,28 @@ public class HomePage extends BasePage {
 	}
 	
 	public void clicaBotaoPesquisa() {
-		esperaElementoFicarInvisivel();
+		esperaElementoFicarInvisivel(By.xpath("//div[@class='PopUp']"));
 		esperaElementoSerClicavel(By.id("menuSearch"));
-		clicaBotao("menuSearch");
+		clicaBotaoById("menuSearch");
 	}
 	
 	public void setCampoPesquisa(String valor) {
+		esperaElementoSerClicavel(By.id("autoComplete"));
 		preencheById("autoComplete", valor);
 	}
 	
 	public void clicaEnterParaPesquisa() {
-		clicaTeclado(Keys.ENTER);
+		clicaTeclado(By.id("autoComplete"), Keys.ENTER);
 	}
-
-	public void clicaProduto(String produto) throws InterruptedException {
-//		esperaElementoSerClicavel(By.xpath("//p[contains(text(),'"+ produto +"')]"));
-//		esperaMensagem(By.xpath("//p[contains(text(),'"+ produto +"')]"), "HP ELITEPAD 1000 G2 TABLET");
-		Thread.sleep(5000);
-		clicaBotao(By.xpath("//p[contains(text(),'"+ produto +"')]"));
+	
+	public void clicaNaCategoriaMice() {
+		esperaElementoFicarInvisivel(By.xpath("//div[@class='PopUp']"));
+		esperaElementoSerClicavel(By.id("miceImg"));
+		clicaBotaoById("miceImg");
 	}
 	
 	public String obterUrlAtual() {
-		return getDriver().getCurrentUrl();
+		return obterUrl();
 	}
 
 }
