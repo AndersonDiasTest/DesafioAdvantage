@@ -1,15 +1,11 @@
 package br.com.keeggo.steps;
 
-import static br.com.keeggo.core.DriverFactory.getDriver;
 import static br.com.keeggo.core.DriverFactory.killDriver;
 
-import java.io.IOException;
-
 import org.junit.Assert;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 import br.com.keeggo.core.Propriedades;
+import br.com.keeggo.core.Utils;
 import br.com.keeggo.pages.HomePage;
 import br.com.keeggo.pages.LoginPage;
 import io.cucumber.java.After;
@@ -23,10 +19,11 @@ public class LoginSteps{
 	
 	private LoginPage loginPage = new LoginPage();
 	private HomePage homePage = new HomePage();
+	private Utils util = new Utils();
 	private String usuario;
 
 	@Dado("que eu acesso a aplicacao")
-	public void que_eu_acesso_a_aplicacao() throws IOException {
+	public void que_eu_acesso_a_aplicacao() {
 	    homePage.acessarPaginaInicial();
 	}
 
@@ -74,8 +71,7 @@ public class LoginSteps{
 	@AfterStep
 	public void addScreenshot(Scenario cenario) {
 		if(Propriedades.TIRAR_PRINT) {
-			final byte [] screenshot = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);
-			cenario.attach(screenshot, "image/png", "image");
+			util.capturaTela(cenario);
 		}
 	}
 	
