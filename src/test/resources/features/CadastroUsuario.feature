@@ -84,3 +84,22 @@ Esquema do Cenario: Realizar cadastro de um usuario que ja existe
 Exemplos:
 | nome de usuario   | email        | senha | confirmacao senha | primeiro nome | ultimo nome | telefone | pais | cidade | endereco | estado | cep | mensagem |
 |Nomes              |mail@mail.com |Mail1  |Mail1              |Jose           |Adriano      |9999      |Brazil|Brasilia|Centro    |DF      |72000|User name already exists|
+
+
+#Cenario: Realizar cadastro de um usuario que ja existe com massa de testes do Excel
+#	E preencho o campo "Username"
+#	E preencho o campo "Email"
+#	E preencho o campo "Password"
+#	E preencho o campo "Confirm Password"
+#	E preencho o campo "First Name"
+#	E preencho o campo "Last Name"
+#	E preencho o campo "Phone Number"
+#	E preencho o campo "Country"
+#	E preencho o campo "City"
+#	E preencho o campo "Address"
+#	E preencho o campo "State Province Region"
+#	E preencho o campo "Postal Code"
+#	E verifico que a opcao "Receber Ofertas" esta marcada
+#	E clico na opcao "Aceitar Termos"
+#	E clico na opcao Register
+#	Entao o sistema exibe a "Mensagem"

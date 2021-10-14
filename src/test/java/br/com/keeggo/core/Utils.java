@@ -29,32 +29,32 @@ public class Utils {
 		return row1;
 	}
 	
-	public void iteraSobreLinha(String colunaBusca) throws IOException {
+	public int recuperaIdColuna(String colunaBusca) throws IOException {
 		XSSFRow row1 = recuperaLinha(0);
-		
+		int idColuna = 0;
 		for (Iterator<Cell> iterator = row1.cellIterator(); iterator.hasNext();) {
 			Cell celula = (Cell) iterator.next();
-			System.out.println(celula.getStringCellValue());
 			if (celula.getStringCellValue().equals(colunaBusca)) {
-				int idColuna = celula.getColumnIndex();
-				System.out.println(celula.getStringCellValue() + idColuna);
+				idColuna = celula.getColumnIndex();
 			}
 		}
+		return idColuna;
 	}
 	
-	public XSSFCell recuperaCelula (int indexLinha, int indexCelula) throws IOException {
-		XSSFRow row1 = recuperaLinha(indexLinha);
-		XSSFCell celula = row1.getCell(indexCelula);
+	public XSSFCell recuperaCelula (String colunaBusca) throws IOException {
+		int idColuna = recuperaIdColuna(colunaBusca);
+		XSSFRow row1 = recuperaLinha(1);
+		XSSFCell celula = row1.getCell(idColuna);
 		return celula;
 	}
 	
-	public String recuperaCelulaString(int indexCelula) throws IOException {
-		XSSFCell celula = recuperaCelula(1, indexCelula);
+	public String recuperaCelulaString(String colunaBusca) throws IOException {
+		XSSFCell celula = recuperaCelula(colunaBusca);
 		return celula.getStringCellValue();
 	}
 	
-	public boolean recuperaCelulaBoolean(int indexCelula) throws IOException {
-		XSSFCell celula = recuperaCelula(1, indexCelula);
+	public boolean recuperaCelulaBoolean(String colunaBusca) throws IOException {
+		XSSFCell celula = recuperaCelula(colunaBusca);
 		boolean valor = false;
 		switch (celula.getStringCellValue()) {
 		case "true":
@@ -66,8 +66,8 @@ public class Utils {
 		}
 		return valor;
 	}
-	public String recuperaCelulaNumerica(int indexCelula) throws IOException {
-		XSSFCell celula = recuperaCelula(1, indexCelula);
+	public String recuperaCelulaNumerica(String colunaBusca) throws IOException {
+		XSSFCell celula = recuperaCelula(colunaBusca);
 		Double numDecimal = celula.getNumericCellValue();
 		Integer inteiro = numDecimal.intValue();
 		return inteiro.toString();

@@ -11,12 +11,12 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/",
+		features = "src/test/resources/features/CadastroUsuario.feature",
 		glue = "br.com.keeggo.steps",
 		plugin = "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 		tags = "not @ignore",
 		monochrome = true,
-		dryRun = false,
+		dryRun = true,
 		snippets = SnippetType.CAMELCASE
 		)
 public class Runner {
