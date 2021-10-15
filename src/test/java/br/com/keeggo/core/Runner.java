@@ -16,7 +16,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		plugin = "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 		tags = "not @ignore",
 		monochrome = true,
-		dryRun = true,
+		dryRun = false,
 		snippets = SnippetType.CAMELCASE
 		)
 public class Runner {

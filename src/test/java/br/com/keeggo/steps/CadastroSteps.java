@@ -24,79 +24,61 @@ public class CadastroSteps {
 		loginPage.clicaBotaoNovaConta();
 	}
 	@Quando("no campo Username preencho {string}")
-	public void noCampoUsernamePreencho(String username) throws IOException {
-		username = util.recuperaCelulaString("Username");
+	public void noCampoUsernamePreencho(String username) {
 		this.usuario = username;
 	    cadastroPage.setUsername(username);
 	}
 	@Quando("no campo Email preencho {string}")
-	public void noCampoEmailPreencho(String email) throws IOException {
-		email = util.recuperaCelulaString("Email");
+	public void noCampoEmailPreencho(String email) {
 	    cadastroPage.setEmail(email);
 	}
 	@Quando("no campo Password preencho {string}")
-	public void noCampoPasswordPreencho(String password) throws IOException {
-		password = util.recuperaCelulaString("Password");
+	public void noCampoPasswordPreencho(String password) {
 	    cadastroPage.setPassword(password);
 	}
 	@Quando("no campo Confirm Password preencho {string}")
-	public void noCampoConfirmPasswordPreencho(String confirmPassword) throws IOException {
-		confirmPassword = util.recuperaCelulaString("Confirm Password");
+	public void noCampoConfirmPasswordPreencho(String confirmPassword) {
 		cadastroPage.setConfirmPassword(confirmPassword);
 	}
 	@Quando("no campo First Name preencho {string}")
-	public void noCampoFirstNamePreencho(String firstName) throws IOException {
-		firstName = util.recuperaCelulaString("First Name");
+	public void noCampoFirstNamePreencho(String firstName) {
 	    cadastroPage.setFirstName(firstName);
 	}
 	@Quando("no campo Last Name preencho {string}")
-	public void noCampoLastNamePreencho(String lastName) throws IOException {
-		lastName = util.recuperaCelulaString("Last Name");
+	public void noCampoLastNamePreencho(String lastName) {
 		cadastroPage.setLastName(lastName);
 	}
 	@Quando("no campo Phone Number preencho {string}")
-	public void noCampoPhoneNumberPreencho(String phoneNumber) throws IOException {
-		phoneNumber = util.recuperaCelulaNumerica("Phone Number");
+	public void noCampoPhoneNumberPreencho(String phoneNumber) {
 		cadastroPage.setPhoneNumber(phoneNumber);
 	}
 	@Quando("no campo Country preencho {string}")
-	public void noCampoCountryPreencho(String country) throws InterruptedException, IOException {
-		country = util.recuperaCelulaString("Country");
+	public void noCampoCountryPreencho(String country) throws InterruptedException {
 		cadastroPage.setCountry(country);
 	}
 	@Quando("no campo City preencho {string}")
-	public void noCampoCityPreencho(String city) throws IOException {
-		city = util.recuperaCelulaString("City");
+	public void noCampoCityPreencho(String city) {
 		cadastroPage.setCity(city);
 	}
 	@Quando("no campo Address preencho {string}")
-	public void noCampoAddressPreencho(String address) throws IOException {
-		address = util.recuperaCelulaString("Address");
+	public void noCampoAddressPreencho(String address) {
 		cadastroPage.setAddress(address);
 	}
 	@Quando("no campo State Province Region preencho {string}")
-	public void noCampoStateProvinceRegionPreencho(String stateProvinceRegion) throws IOException {
-		stateProvinceRegion = util.recuperaCelulaString("State Province Region");
+	public void noCampoStateProvinceRegionPreencho(String stateProvinceRegion) {
 		cadastroPage.setStateProvinceRegion(stateProvinceRegion);
 	}
 	@Quando("no campo Postal Code preencho {string}")
-	public void noCampoPostalCodePreencho(String postalCode) throws IOException {
-		postalCode = util.recuperaCelulaNumerica("Postal Code");
+	public void noCampoPostalCodePreencho(String postalCode) {
 		cadastroPage.setPostalCode(postalCode);
 	}
 	@Quando("verifico que a opcao Receber ofertas esta marcada")
-	public void verificoQueAOpcaoReceberOfertasEstaMarcada() throws IOException {
-		if (util.recuperaCelulaBoolean("Receber Ofertas")) {
-			Assert.assertTrue(cadastroPage.permitePromocoesEstaSelecionado());
-		} else {
-			cadastroPage.clicaCheckboxEmailsPromocionais();
-		}
+	public void verificoQueAOpcaoReceberOfertasEstaMarcada() {
+			Assert.assertTrue(cadastroPage.permiteEmailsPromocionaisEstaSelecionado());
 	}
 	@Quando("clico na opcao Aceitar termos")
-	public void clicoNaOpcaoAceitarTermos() throws IOException {
-		if (util.recuperaCelulaBoolean("Aceitar Termos")) {
-			cadastroPage.clicaCheckboxTermos();
-		}	    
+	public void clicoNaOpcaoAceitarTermos() {
+			cadastroPage.clicaCheckboxTermos();   
 	}
 	@Quando("clico na opcao Register")
 	public void clicoNaOpcaoRegister() {
@@ -126,20 +108,26 @@ public class CadastroSteps {
 	// --- steps consultando massa de testes do Excel --- //
 	
 	@Quando("preencho o campo {string}")
-	public void preenchoOCampo(String campo) throws IOException {
-		
+	public void preenchoOCampo(String campo) throws IOException, InterruptedException {
+		cadastroPage.preencheCampo(campo);
 	}
 	@Quando("verifico que a opcao {string} esta marcada")
-	public void verificoQueAOpcaoEstaMarcada(String string) {
-	    
+	public void verificoQueAOpcaoEstaMarcada(String opcaoEmailsPromocionais) throws IOException {
+		if (util.recuperaCelulaBoolean(opcaoEmailsPromocionais)) {
+			Assert.assertTrue(cadastroPage.permiteEmailsPromocionaisEstaSelecionado());
+		} else {
+			cadastroPage.clicaCheckboxEmailsPromocionais();
+		}
 	}
 	@Quando("clico na opcao {string}")
-	public void clicoNaOpcao(String string) {
-	    
+	public void clicoNaOpcao(String opcaoAceitarTermos) throws IOException {
+		if (util.recuperaCelulaBoolean(opcaoAceitarTermos)) {
+			cadastroPage.clicaCheckboxTermos();
+		}
 	}
 	@Entao("o sistema exibe a {string}")
-	public void oSistemaExibeA(String string) {
-	    
+	public void oSistemaExibeA(String mensagem) throws IOException {
+	    Assert.assertEquals(util.recuperaCelulaString(mensagem), cadastroPage.obterMsgContaJaExistente());
 	}
 
 }
