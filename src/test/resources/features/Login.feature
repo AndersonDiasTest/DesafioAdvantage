@@ -44,3 +44,18 @@ Exemplos:
 | nome de usuario   | senha | mensagem                     | campo  |
 |                   | pass  |Username field is required    |username|
 | Conta de Teste    |       |Password field is required    |password|
+
+
+Esquema do Cenario: Relembrar dados do usuario
+	E no campo Username informo "<nome de usuario>"
+	E no campo Password informo "<senha>"
+	E clico na opcao Remember Me
+	E clico na opcao Sign In
+	E clico no icone de usuario
+	E clico na opcao Sign Out
+	E clico no icone de usuario
+	Entao o sistema exibe os campos "<nome de usuario>" e "<senha>" preenchidos com os dados do ultimo usuario logado
+	
+Exemplos:
+| nome de usuario   | senha |
+| Nomes             |Mail1  |
