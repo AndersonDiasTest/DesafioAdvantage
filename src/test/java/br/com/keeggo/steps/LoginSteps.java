@@ -68,6 +68,23 @@ public class LoginSteps{
 	    Assert.assertFalse(loginPage.botaoSignInEstaHabilitado());
 	}
 	
+	//relembrar usuario
+	
+	@Quando("clico na opcao Remember Me")
+	public void clicoNaOpcaoRememberMe() {
+	    loginPage.clicaCheckboxRememberMe();
+	}
+	@Quando("clico na opcao Sign Out")
+	public void clicoNaOpcaoSignOut() {
+	    loginPage.clicaBotaoSignOut();
+	}
+	@Entao("o sistema exibe os campos {string} e {string} preenchidos com os dados do ultimo usuario logado")
+	public void oSistemaExibeOsCamposEPreenchidosComOsDadosDoUltimoUsuarioLogado(String username, String password) {
+	    Assert.assertEquals(username, loginPage.getUsernameValue());
+	    Assert.assertEquals(password, loginPage.getPasswordValue());
+	    Assert.assertTrue(loginPage.rememberMeEstaSelecionado());
+	}
+	
 	@AfterStep
 	public void addScreenshot(Scenario cenario) {
 		if(Propriedades.TIRAR_PRINT) {

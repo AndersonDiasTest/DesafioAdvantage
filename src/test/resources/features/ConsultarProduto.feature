@@ -1,6 +1,6 @@
 # language: pt
 
-@consultar_produto
+@consultar_produto @ignore
 Funcionalidade: Consultar Produto
 
 Como um usuario logado

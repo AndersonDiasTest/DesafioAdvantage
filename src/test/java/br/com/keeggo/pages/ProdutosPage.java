@@ -37,6 +37,7 @@ public class ProdutosPage extends BasePage {
 	}
 
 	public void clicaProduto(String produto) {
+//		esperaElementoFicarInvisivel(By.id("follow"));
 		esperaMensagemSer(By.xpath("//div[@class='cell categoryRight']/ul/li[1]/p[1]/a"), produto);
 		clicaLink(produto);
 	}

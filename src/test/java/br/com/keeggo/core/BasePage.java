@@ -42,8 +42,8 @@ public abstract class BasePage {
 		getDriver().findElement(By.name(campo)).click();
 	}
 
-	public void selecionaOpcaoCombo(String campo, String valor) {
-		WebElement elemento = getDriver().findElement(By.name(campo));
+	public void selecionaOpcaoCombo(String nameCampo, String valor) {
+		WebElement elemento = getDriver().findElement(By.name(nameCampo));
 		Select combo = new Select(elemento);
 		combo.selectByVisibleText(valor);
 	}
@@ -84,6 +84,10 @@ public abstract class BasePage {
 	public boolean botaoEstaHabilitado(String idCampo) {
 		return getDriver().findElement(By.id(idCampo)).isEnabled();
 	}
+	
+	public String obterValorPreenchido(String nameCampo) {
+		return getDriver().findElement(By.name(nameCampo)).getAttribute("value");
+	}
 
 	// -------------------wait-----------------------//
 
@@ -102,4 +106,7 @@ public abstract class BasePage {
 		wait.until(ExpectedConditions
 				.invisibilityOfElementLocated(by));
 	}
+	
+	// testes
+	
 }

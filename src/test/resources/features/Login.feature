@@ -20,7 +20,7 @@ Esquema do Cenario: Realizar login com sucesso
 	
 Exemplos:
 | nome de usuario   | senha |
-| Nomes             |Mail1  |
+| ContaAdvantageD   |Adva1  |
 
 
 Esquema do Cenario: Nao realizar login com senha incorreta
@@ -58,4 +58,4 @@ Esquema do Cenario: Relembrar dados do usuario
 	
 Exemplos:
 | nome de usuario   | senha |
-| Nomes             |Mail1  |
+| ContaAdvantageD   |Adva1  |

@@ -39,5 +39,29 @@ public class LoginPage extends BasePage {
 		removeFocoCampo("signInResultMessage");
 		return obterMensagem(campo);
 	}
+
+	public void clicaCheckboxRememberMe() {
+		esperaElementoSerClicavel(By.name("remember_me"));
+		clicaCheckboxByName("remember_me");
+	}
+
+	public void clicaBotaoSignOut() {
+		esperaElementoSerClicavel(By.xpath("//*[@id='loginMiniTitle']//label[contains(text(), 'Sign out')]"));
+		clicaBotao(By.xpath("//*[@id='loginMiniTitle']//label[contains(text(), 'Sign out')]"));
+	}
 	
+	public String getUsernameValue() {
+		esperaElementoSerClicavel(By.name("username"));
+		return obterValorPreenchido("username");
+	}
+	
+	public String getPasswordValue() {
+		esperaElementoSerClicavel(By.name("password"));
+		return obterValorPreenchido("password");
+	}
+	
+	public boolean rememberMeEstaSelecionado() {
+		esperaElementoSerClicavel(By.name("remember_me"));
+		return checkboxEstaSelecionado("remember_me");
+	}
 }

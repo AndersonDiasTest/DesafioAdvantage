@@ -12,6 +12,7 @@ public class HomePage extends BasePage {
 	}
 
 	public void clicaBotaoUsuario() {
+		esperaElementoFicarInvisivel(By.className("PopUp"));
 		esperaElementoSerClicavel(By.id("headphonesImg"));
 		clicaBotaoById("menuUser");
 	}
